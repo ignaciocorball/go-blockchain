@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "70f6fa4b-f5be-42c8-bfd2-821584572d7d",
+		"name": "Golang Blockchain",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10710045"
+	},
+	"item": [
+		{
+			"name": "Blockchain",
+			"item": [
+				{
+					"name": "Wallets",
+					"item": [
+						{
+							"name": "Create Wallet",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1323/wallet",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1323",
+									"path": [
+										"wallet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Mint Wallet",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1323/wallet/:address/mint?amount=7777777&privateKey=30770201010420579c66c5d7640ebc04dc2320eeb7947572adc1c2e735da638e18c6d134c392a9a00a06082a8648ce3d030107a14403420004d7e0e14fba15618f17e07914b60453bbd921204ab5686379a55ba8ae682fdcf401219eaba68d1f47d87cd0e1fe0dfdafc7754ec70291dc9dc4d77d773869e76a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1323",
+									"path": [
+										"wallet",
+										":address",
+										"mint"
+									],
+									"query": [
+										{
+											"key": "amount",
+											"value": "7777777"
+										},
+										{
+											"key": "privateKey",
+											"value": "30770201010420579c66c5d7640ebc04dc2320eeb7947572adc1c2e735da638e18c6d134c392a9a00a06082a8648ce3d030107a14403420004d7e0e14fba15618f17e07914b60453bbd921204ab5686379a55ba8ae682fdcf401219eaba68d1f47d87cd0e1fe0dfdafc7754ec70291dc9dc4d77d773869e76a"
+										}
+									],
+									"variable": [
+										{
+											"key": "address",
+											"value": "0x4bf2f0da8bbad176f7c1a940a3c935b6d103eeea"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Wallet Balance",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1323/wallet/:address/balance",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1323",
+									"path": [
+										"wallet",
+										":address",
+										"balance"
+									],
+									"variable": [
+										{
+											"key": "address",
+											"value": "0x4bf2f0da8bbad176f7c1a940a3c935b6d103eeea"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Blocks",
+					"item": [
+						{
+							"name": "Get Block",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1323/block/BcGs/wXKn6kTqDpiLuqAoZOhuyEBDzhpcev8XcCRo1E=",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1323",
+									"path": [
+										"block",
+										"BcGs",
+										"wXKn6kTqDpiLuqAoZOhuyEBDzhpcev8XcCRo1E="
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Blocks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1323/blocks",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1323",
+									"path": [
+										"blocks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Transactions",
+					"item": [
+						{
+							"name": "Transaction",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1323/transaction?from=0x4bf2f0da8bbad176f7c1a940a3c935b6d103eeea&to=0x1e022cabe442edaf8d2afe7ff0feaa5565891747&amount=777&privateKey=30770201010420579c66c5d7640ebc04dc2320eeb7947572adc1c2e735da638e18c6d134c392a9a00a06082a8648ce3d030107a14403420004d7e0e14fba15618f17e07914b60453bbd921204ab5686379a55ba8ae682fdcf401219eaba68d1f47d87cd0e1fe0dfdafc7754ec70291dc9dc4d77d773869e76a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1323",
+									"path": [
+										"transaction"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "0x4bf2f0da8bbad176f7c1a940a3c935b6d103eeea"
+										},
+										{
+											"key": "to",
+											"value": "0x1e022cabe442edaf8d2afe7ff0feaa5565891747"
+										},
+										{
+											"key": "amount",
+											"value": "777"
+										},
+										{
+											"key": "privateKey",
+											"value": "30770201010420579c66c5d7640ebc04dc2320eeb7947572adc1c2e735da638e18c6d134c392a9a00a06082a8648ce3d030107a14403420004d7e0e14fba15618f17e07914b60453bbd921204ab5686379a55ba8ae682fdcf401219eaba68d1f47d87cd0e1fe0dfdafc7754ec70291dc9dc4d77d773869e76a"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Contracts",
+					"item": [
+						{
+							"name": "Deploy Contract",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1323/contract?id=7&code=function() { return \"UFCHAIN\" }",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1323",
+									"path": [
+										"contract"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "7"
+										},
+										{
+											"key": "code",
+											"value": "function() { return \"UFCHAIN\" }"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Execute Contract",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1323/contract/:id/execute",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1323",
+									"path": [
+										"contract",
+										":id",
+										"execute"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "BFF",
+			"item": []
+		}
+	]
+}
