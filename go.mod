@@ -1,4 +1,4 @@
-module github.com/davepartner/go-blockchain
+module github.com/ignaciocorball/go-blockchain
 
 go 1.24.3
 

@@ -4,11 +4,15 @@
 package main
 
 import (
+	"fmt"
 	"log"
+	"os"
+	"os/signal"
+	"syscall"
 
-	"github.com/davepartner/go-blockchain/api"
-	"github.com/davepartner/go-blockchain/blockchain"
-	"github.com/davepartner/go-blockchain/storage"
+	"github.com/ignaciocorball/go-blockchain/api"
+	"github.com/ignaciocorball/go-blockchain/blockchain"
+	"github.com/ignaciocorball/go-blockchain/storage"
 )
 
 // main initializes and starts the UFChain blockchain node.
@@ -42,17 +46,30 @@ func main() {
 	// Initialize the Badger database for persistent storage
 	// The database will be stored in the ./storage/badger directory
 	db := storage.OpenDB("./storage/badger")
-	// Ensure the database is properly closed when the application exits
-	defer db.CloseDB()
+
+	// Configurar el manejo de señales para un cierre limpio
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
+
+	// Goroutine para manejar el cierre limpio
+	go func() {
+		<-sigChan
+		fmt.Println("\nCerrando la aplicación...")
+		db.CloseDB()
+		os.Exit(0)
+	}()
 
 	// Persist the genesis block to the database
 	// This ensures the blockchain can be recovered if the application restarts
 	err := db.SaveBlock(genesisBlock)
 	if err != nil {
-		log.Panic(err)
+		log.Printf("Error saving genesis block: %v", err)
+		db.CloseDB()
+		os.Exit(1)
 	}
 
 	// Start the API server with the blockchain and database instances
 	// This will begin listening for incoming requests
+	fmt.Println("Iniciando servidor en http://localhost:1323")
 	api.StartServer(bc, db)
 }
