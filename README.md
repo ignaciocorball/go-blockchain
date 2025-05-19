@@ -150,7 +150,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [ ] Implement full smart contract language
 - [ ] Add network layer for P2P communication
-- [ ] Implement wallet system
+- [X] Implement wallet system
 - [ ] Add more consensus mechanisms
 - [ ] Improve API documentation
 - [ ] Add monitoring and metrics
